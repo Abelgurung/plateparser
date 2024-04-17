@@ -1,12 +1,15 @@
 import pandas as pd
 
+
 class plateParser:
     @classmethod
-    def findStart(self, df):
+    def findStart(self, df, drop_na=True):
+        if drop_na:
+            df = df.dropna()
         for i in range(df.shape[0]):
             for j in range(df.shape[1]):
                 element = df.iloc[i, j]
-                if element == "A":
+                if element in ("A", "a"):
                     return [i, j]
 
         print("Couldn't find 'A' well row")
@@ -21,6 +24,14 @@ class plateParser:
         return row_letter
 
     @classmethod
+    def getLowerRowLetter(self, n):
+        if n <= 26:
+            row_letter = chr(96 + n)
+        else:
+            row_letter = chr(96 + (n - 1) // 26) + chr(97 + (n - 1) % 26)
+        return row_letter
+
+    @classmethod
     def getIdxList(self, start_idx, plateSize):
         indices_list = []
         for i in range(plateSize[0] + 1):
@@ -32,8 +43,11 @@ class plateParser:
 
     @classmethod
     def parse(self, df):
-        df = df.dropna()
         startIdx = self.findStart(df)
+        if startIdx == None:
+            startIdx = self.findStart(df, drop_na=False)
+        else:
+            df = df.dropna()
         plateSize = self.findPlateSize(df, startIdx)
 
         indices_list = self.getIdxList(startIdx, plateSize)
@@ -57,7 +71,7 @@ class plateParser:
         for i in standardPlates:
             try:
                 idx = i[0] + start_idx[0]
-                if df.iloc[idx, start_idx[1]] == self.getRowLetter(idx - start_idx[0] + 1):
+                if df.iloc[idx, start_idx[1]] in (self.getRowLetter(idx - start_idx[0] + 1), self.getLowerRowLetter(idx - start_idx[0] + 1)):
                     plateSize = i
                     break
             except IndexError:
