@@ -7,7 +7,6 @@ class plateParser:
             for j in range(df.shape[1]):
                 element = df.iloc[i, j]
                 if element == "A":
-                    print("Start Index Found...")
                     return [i, j]
 
         print("Couldn't find 'A' well row")

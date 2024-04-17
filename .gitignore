@@ -1,5 +1,3 @@
 .ipynb_checkpoints/
-data/
-datasets/
 __pycache__/
-
+*.csv
