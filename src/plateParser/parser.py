@@ -1,16 +1,16 @@
 import pandas as pd
 
 
-class plateParser:
+class plateparser:
     @classmethod
     def findStart(self, df, drop_na=True):
         """
         Finds the starting position of a plate in a DataFrame by searching for the first occurrence of "A" or "a".
-        
+
         Parameters:
         - df (DataFrame): The DataFrame containing the plate data.
         - drop_na (bool, optional): If True, drops rows and columns containing only NaN values before searching. Default is True.
-        
+
         Returns:
         - list: A list containing the row and column indices of the first occurrence of "A" or "a", or None if not found.
         """
@@ -30,10 +30,10 @@ class plateParser:
     def getRowLetter(self, n):
         """
         Converts a numeric row index to its corresponding uppercase letter representation.
-        
+
         Parameters:
         - n (int): The numeric row index.
-        
+
         Returns:
         - str: The letter corresponding to the row index, following an alphabetic sequence.
         """
@@ -47,10 +47,10 @@ class plateParser:
     def getLowerRowLetter(self, n):
         """
         Converts a numeric row index to its corresponding lowercase letter representation.
-        
+
         Parameters:
         - n (int): The numeric row index, starting from 1.
-        
+
         Returns:
         - str: The lowercase letter corresponding to the row index, following an alphabetic sequence.
         """
@@ -64,11 +64,11 @@ class plateParser:
     def getIdxList(self, start_idx, plateSize):
         """
         Generates a list of indices corresponding to all wells in a plate, based on the starting index and plate size.
-        
+
         Parameters:
         - start_idx (list): A list containing the starting row and column indices of the plate.
         - plateSize (tuple): A tuple containing the number of rows and columns in the plate.
-        
+
         Returns:
         - list: A list of tuples, each representing the row and column indices of a well.
         """
@@ -84,10 +84,10 @@ class plateParser:
     def parse(self, df):
         """
         Parses a DataFrame into a plate format by finding the starting index and determining the plate size.
-        
+
         Parameters:
         - df (DataFrame): The DataFrame containing the plate data.
-        
+
         Returns:
         - tuple: A tuple containing the plate size and a list of values corresponding to each well in the plate.
         """
@@ -106,11 +106,11 @@ class plateParser:
     def createIdxList(self, start_idx, plateSize):
         """
         Creates a list of indices corresponding to the wells of a plate, starting from a given index.
-        
+
         Parameters:
         - start_idx (list): A list containing the starting row and column indices of the plate.
         - plateSize (tuple): A tuple containing the number of rows and columns in the plate.
-        
+
         Returns:
         - list: A list of tuples, each representing the row and column indices of a well.
         """
@@ -126,11 +126,11 @@ class plateParser:
     def findPlateSize(self, df, start_idx):
         """
         Determines the size of the plate based on the starting index by checking against standard plate sizes.
-        
+
         Parameters:
         - df (DataFrame): The DataFrame containing the plate data.
         - start_idx (list): A list containing the starting row and column indices of the plate.
-        
+
         Returns:
         - tuple: A tuple containing the number of rows and columns in the plate.
         """
@@ -150,11 +150,11 @@ class plateParser:
     def tidyFormat(self, df, save=None):
         """
         Converts the plate data into a tidy DataFrame format, where each well is a row.
-        
+
         Parameters:
         - df (DataFrame): The DataFrame containing the plate data.
         - save (str, optional): Optional path to save the parsed DataFrame as a CSV file.
-        
+
         Returns:
         - DataFrame: A tidy DataFrame where each row corresponds to a well with its row, column, well ID, and value.
         """
@@ -188,12 +188,12 @@ class plateParser:
     def plateFormat(self, df, keep_index=False, save=None):
         """
         Converts the plate data into a plate-like DataFrame format, retaining its structure.
-        
+
         Parameters:
         - df (DataFrame): The DataFrame containing the plate data.
         - keep_index (bool, optional): If True, includes an index column with row letters. Default is False.
         - save (str, optional): Optional path to save the formatted DataFrame as a CSV file.
-        
+
         Returns:
         - DataFrame: A DataFrame resembling the original plate format.
         """

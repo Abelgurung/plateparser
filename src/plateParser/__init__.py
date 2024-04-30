@@ -1,4 +1,4 @@
-from .parser import plateParser
+from .parser import plateparser
 
-plateFormat = plateParser.plateFormat
-tidyFormat = plateParser.tidyFormat
+plateFormat = plateparser.plateFormat
+tidyFormat = plateparser.tidyFormat
