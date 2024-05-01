@@ -17,7 +17,7 @@ Dealing with raw microplate data can be cumbersome because it is not structured 
 
 ```python
 import pandas as pd
-from plateparser import plateparser
+import plateparser
 
 #Load your data
 raw_microplate_data = pd.read_csv('../examples/byonoy_absolute_example.csv')
