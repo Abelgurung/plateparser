@@ -4,8 +4,8 @@ Dealing with raw microplate data can be cumbersome because it is not structured 
 
 ## Features
 
-1. **Tidy Format Conversion**: Converts plate data into a tidy format.
-2. **Plate Format Conversion**: Converts plate data into a plate-like format, resembling its original structure.
+1. **Tidy Format Conversion**: Converts raw plate data into a tidy format.
+2. **Plate Format Conversion**: Converts raw plate data into a plate-like format, resembling its original structure.
 
 ## Installation
 

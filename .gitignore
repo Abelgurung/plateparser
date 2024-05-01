@@ -3,3 +3,4 @@ __pycache__/
 *.csv
 .DS_store
 *.egg-info
+dist/
